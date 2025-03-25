@@ -20,6 +20,13 @@
 		EF19A4A02D91129A00CEE606 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A49F2D91129A00CEE606 /* String+Ext.swift */; };
 		EF19A4A32D91187B00CEE606 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A4A22D91187B00CEE606 /* Model.swift */; };
 		EF19A4A52D911A3A00CEE606 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A4A42D911A3A00CEE606 /* LoginView.swift */; };
+		EFFC4AC02D92695A00DD45AB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4ABF2D92695A00DD45AB /* MainView.swift */; };
+		EFFC4AC22D926B5000DD45AB /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4AC12D926B5000DD45AB /* AppState.swift */; };
+		EFFC4AC72D92796900DD45AB /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4AC62D92796900DD45AB /* ChatsView.swift */; };
+		EFFC4AC92D92798600DD45AB /* SetttingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4AC82D92798600DD45AB /* SetttingsView.swift */; };
+		EFFC4ACB2D927E9F00DD45AB /* GroupListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4ACA2D927E9F00DD45AB /* GroupListContainerView.swift */; };
+		EFFC4ACD2D927F1A00DD45AB /* AddNewGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4ACC2D927F1A00DD45AB /* AddNewGroupView.swift */; };
+		EFFC4ACF2D92838200DD45AB /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4ACE2D92838200DD45AB /* Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +41,13 @@
 		EF19A49F2D91129A00CEE606 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		EF19A4A22D91187B00CEE606 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EF19A4A42D911A3A00CEE606 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EFFC4ABF2D92695A00DD45AB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		EFFC4AC12D926B5000DD45AB /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		EFFC4AC62D92796900DD45AB /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
+		EFFC4AC82D92798600DD45AB /* SetttingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetttingsView.swift; sourceTree = "<group>"; };
+		EFFC4ACA2D927E9F00DD45AB /* GroupListContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListContainerView.swift; sourceTree = "<group>"; };
+		EFFC4ACC2D927F1A00DD45AB /* AddNewGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewGroupView.swift; sourceTree = "<group>"; };
+		EFFC4ACE2D92838200DD45AB /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +110,11 @@
 			children = (
 				EF19A49C2D91106000CEE606 /* SignupView.swift */,
 				EF19A4A42D911A3A00CEE606 /* LoginView.swift */,
+				EFFC4ABF2D92695A00DD45AB /* MainView.swift */,
+				EFFC4AC62D92796900DD45AB /* ChatsView.swift */,
+				EFFC4AC82D92798600DD45AB /* SetttingsView.swift */,
+				EFFC4ACA2D927E9F00DD45AB /* GroupListContainerView.swift */,
+				EFFC4ACC2D927F1A00DD45AB /* AddNewGroupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -112,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				EF19A4A22D91187B00CEE606 /* Model.swift */,
+				EFFC4AC12D926B5000DD45AB /* AppState.swift */,
+				EFFC4ACE2D92838200DD45AB /* Group.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,12 +218,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFFC4ACB2D927E9F00DD45AB /* GroupListContainerView.swift in Sources */,
+				EFFC4AC92D92798600DD45AB /* SetttingsView.swift in Sources */,
 				EF19A4A52D911A3A00CEE606 /* LoginView.swift in Sources */,
+				EFFC4AC02D92695A00DD45AB /* MainView.swift in Sources */,
+				EFFC4AC72D92796900DD45AB /* ChatsView.swift in Sources */,
 				EF19A4A32D91187B00CEE606 /* Model.swift in Sources */,
+				EFFC4ACF2D92838200DD45AB /* Group.swift in Sources */,
+				EFFC4AC22D926B5000DD45AB /* AppState.swift in Sources */,
 				EF19A49D2D91106100CEE606 /* SignupView.swift in Sources */,
 				EF19A48B2D910D6500CEE606 /* ContentView.swift in Sources */,
 				EF19A4A02D91129A00CEE606 /* String+Ext.swift in Sources */,
 				EF19A48C2D910D6500CEE606 /* WhatsUpApp.swift in Sources */,
+				EFFC4ACD2D927F1A00DD45AB /* AddNewGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

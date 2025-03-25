@@ -13,6 +13,9 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var errorMessage: String = ""
     @State private var hasError: Bool = false
+    @State private var showSignUp = false
+    
+    @EnvironmentObject private var appState: AppState
     
     private var isFormValid: Bool {
         !email.isEmptyOrWhiteSpace && !password.isEmptyOrWhiteSpace
@@ -20,8 +23,8 @@ struct LoginView: View {
     
     private func login() async {
         do {
-            let _ = try await Auth.auth().signIn(withEmail: email, password: password)
-            //Go to MainView
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            appState.userSession = result.user
         } catch {
             errorMessage = error.localizedDescription
             hasError = true
@@ -29,9 +32,7 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Login")
-                .font(.title.weight(.bold))
+        NavigationStack {
             Form {
                 TextField("Eamil", text: $email)
                     .textInputAutocapitalization(.never)
@@ -39,7 +40,9 @@ struct LoginView: View {
                     .textInputAutocapitalization(.never)
                 
                 Button {
-                    
+                    Task {
+                        await login()
+                    }
                 } label: {
                     Text("Login")
                         .frame(maxWidth: .infinity)
@@ -51,13 +54,15 @@ struct LoginView: View {
                     Text("Have no account?")
                     
                     Button {
-                        
+                        showSignUp = true
                     } label: {
                         Text("SignUp")
                     }
-
+                    
                 }
                 .frame(maxWidth: .infinity)
+                .navigationTitle("Login")
+                .navigationBarTitleDisplayMode(.large)
             }
         }
         .alert("Error Login", isPresented: $hasError) {
@@ -65,10 +70,13 @@ struct LoginView: View {
         } message: {
             Text(errorMessage)
         }
-
+        .fullScreenCover(isPresented: $showSignUp) {
+            SignupView()
+        }
     }
 }
 
 #Preview {
     LoginView()
+        .environmentObject(AppState())
 }

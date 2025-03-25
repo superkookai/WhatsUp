@@ -14,8 +14,10 @@ struct SignupView: View {
     @State private var displayName: String = ""
     @State private var errorMessage: String = ""
     @State private var hasError: Bool = false
+    @State private var showLogin = false
     
     @EnvironmentObject private var model: Model
+    @EnvironmentObject private var appState: AppState
     
     private var isFormValid: Bool {
         !email.isEmptyOrWhiteSpace && !password.isEmptyOrWhiteSpace && !displayName.isEmptyOrWhiteSpace
@@ -25,7 +27,7 @@ struct SignupView: View {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             try await model.updateDisplayName(for: result.user, displayName: displayName)
-            
+            appState.userSession = result.user
         } catch {
             errorMessage = error.localizedDescription
             hasError = true
@@ -33,9 +35,7 @@ struct SignupView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Sign Up")
-                .font(.title.weight(.bold))
+        NavigationStack {
             Form {
                 TextField("Eamil", text: $email)
                     .textInputAutocapitalization(.never)
@@ -59,13 +59,15 @@ struct SignupView: View {
                     Text("Alredy have account?")
                     
                     Button {
-                        
+                        showLogin = true
                     } label: {
                         Text("Login")
                     }
-
+                    
                 }
                 .frame(maxWidth: .infinity)
+                .navigationTitle("SignUp")
+                .navigationBarTitleDisplayMode(.large)
             }
         }
         .alert("Sign Up Error", isPresented: $hasError) {
@@ -73,11 +75,14 @@ struct SignupView: View {
         } message: {
             Text(errorMessage)
         }
-
+        .fullScreenCover(isPresented: $showLogin) {
+            LoginView()
+        }
     }
 }
 
 #Preview {
     SignupView()
         .environmentObject(Model())
+        .environmentObject(AppState())
 }
