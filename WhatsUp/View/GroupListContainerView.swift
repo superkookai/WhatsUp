@@ -10,28 +10,47 @@ import SwiftUI
 struct GroupListContainerView: View {
     @State private var showAddNewGroup: Bool = false
     
+    @EnvironmentObject private var model: Model
+    
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                
-                Button {
-                    showAddNewGroup = true
+        NavigationStack {
+            List(model.groups) { group in
+                NavigationLink {
+                    GroupDetailView(group: group)
                 } label: {
-                    Text("New Group")
+                    HStack {
+                        Image(systemName: "person.2")
+                        Text(group.subject)
+                            .font(.title)
+                    }
                 }
-
             }
-            
-            Spacer()
+            .listStyle(.plain)
+            .navigationTitle("Groups")
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showAddNewGroup = true
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                    }
+                }
+            })
         }
-        .padding()
         .sheet(isPresented: $showAddNewGroup) {
             AddNewGroupView()
+        }
+        .task {
+            do {
+                try await model.populateGroups()
+            } catch {
+                print("Error fetching groups: \(error.localizedDescription)")
+            }
         }
     }
 }
 
 #Preview {
     GroupListContainerView()
+        .environmentObject(Model())
 }
