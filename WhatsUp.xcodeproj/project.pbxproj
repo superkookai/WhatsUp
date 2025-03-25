@@ -6,23 +6,45 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EF19A4892D910D6500CEE606 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF19A4832D910D6500CEE606 /* Preview Assets.xcassets */; };
+		EF19A48A2D910D6500CEE606 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF19A4852D910D6500CEE606 /* Assets.xcassets */; };
+		EF19A48B2D910D6500CEE606 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A4862D910D6500CEE606 /* ContentView.swift */; };
+		EF19A48C2D910D6500CEE606 /* WhatsUpApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A4872D910D6500CEE606 /* WhatsUpApp.swift */; };
+		EF19A4912D910E8700CEE606 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF19A4902D910E8700CEE606 /* GoogleService-Info.plist */; };
+		EF19A4942D910F5700CEE606 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EF19A4932D910F5700CEE606 /* FirebaseAuth */; };
+		EF19A4962D910F5700CEE606 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = EF19A4952D910F5700CEE606 /* FirebaseCore */; };
+		EF19A4982D910F5700CEE606 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EF19A4972D910F5700CEE606 /* FirebaseFirestore */; };
+		EF19A49A2D910F5700CEE606 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EF19A4992D910F5700CEE606 /* FirebaseStorage */; };
+		EF19A49D2D91106100CEE606 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A49C2D91106000CEE606 /* SignupView.swift */; };
+		EF19A4A02D91129A00CEE606 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A49F2D91129A00CEE606 /* String+Ext.swift */; };
+		EF19A4A32D91187B00CEE606 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A4A22D91187B00CEE606 /* Model.swift */; };
+		EF19A4A52D911A3A00CEE606 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A4A42D911A3A00CEE606 /* LoginView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		EF19A4722D910D5A00CEE606 /* WhatsUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF19A4832D910D6500CEE606 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EF19A4852D910D6500CEE606 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF19A4862D910D6500CEE606 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EF19A4872D910D6500CEE606 /* WhatsUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsUpApp.swift; sourceTree = "<group>"; };
+		EF19A48F2D910DF100CEE606 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EF19A4902D910E8700CEE606 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EF19A49C2D91106000CEE606 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		EF19A49F2D91129A00CEE606 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		EF19A4A22D91187B00CEE606 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		EF19A4A42D911A3A00CEE606 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		EF19A4742D910D5A00CEE606 /* WhatsUp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WhatsUp;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EF19A46F2D910D5A00CEE606 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF19A4962D910F5700CEE606 /* FirebaseCore in Frameworks */,
+				EF19A49A2D910F5700CEE606 /* FirebaseStorage in Frameworks */,
+				EF19A4942D910F5700CEE606 /* FirebaseAuth in Frameworks */,
+				EF19A4982D910F5700CEE606 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +54,8 @@
 		EF19A4692D910D5A00CEE606 = {
 			isa = PBXGroup;
 			children = (
-				EF19A4742D910D5A00CEE606 /* WhatsUp */,
+				EF19A48F2D910DF100CEE606 /* .gitignore */,
+				EF19A4882D910D6500CEE606 /* WhatsUp */,
 				EF19A4732D910D5A00CEE606 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +66,54 @@
 				EF19A4722D910D5A00CEE606 /* WhatsUp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EF19A4842D910D6500CEE606 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EF19A4832D910D6500CEE606 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EF19A4882D910D6500CEE606 /* WhatsUp */ = {
+			isa = PBXGroup;
+			children = (
+				EF19A4A12D91186F00CEE606 /* Model */,
+				EF19A49E2D91128700CEE606 /* Extension */,
+				EF19A49B2D91104F00CEE606 /* View */,
+				EF19A4862D910D6500CEE606 /* ContentView.swift */,
+				EF19A4872D910D6500CEE606 /* WhatsUpApp.swift */,
+				EF19A4852D910D6500CEE606 /* Assets.xcassets */,
+				EF19A4902D910E8700CEE606 /* GoogleService-Info.plist */,
+				EF19A4842D910D6500CEE606 /* Preview Content */,
+			);
+			path = WhatsUp;
+			sourceTree = "<group>";
+		};
+		EF19A49B2D91104F00CEE606 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EF19A49C2D91106000CEE606 /* SignupView.swift */,
+				EF19A4A42D911A3A00CEE606 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EF19A49E2D91128700CEE606 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EF19A49F2D91129A00CEE606 /* String+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EF19A4A12D91186F00CEE606 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EF19A4A22D91187B00CEE606 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,11 +131,12 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				EF19A4742D910D5A00CEE606 /* WhatsUp */,
-			);
 			name = WhatsUp;
 			packageProductDependencies = (
+				EF19A4932D910F5700CEE606 /* FirebaseAuth */,
+				EF19A4952D910F5700CEE606 /* FirebaseCore */,
+				EF19A4972D910F5700CEE606 /* FirebaseFirestore */,
+				EF19A4992D910F5700CEE606 /* FirebaseStorage */,
 			);
 			productName = WhatsUp;
 			productReference = EF19A4722D910D5A00CEE606 /* WhatsUp.app */;
@@ -94,6 +166,9 @@
 			);
 			mainGroup = EF19A4692D910D5A00CEE606;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EF19A4922D910F5700CEE606 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EF19A4732D910D5A00CEE606 /* Products */;
 			projectDirPath = "";
@@ -109,6 +184,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF19A4892D910D6500CEE606 /* Preview Assets.xcassets in Resources */,
+				EF19A48A2D910D6500CEE606 /* Assets.xcassets in Resources */,
+				EF19A4912D910E8700CEE606 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +197,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF19A4A52D911A3A00CEE606 /* LoginView.swift in Sources */,
+				EF19A4A32D91187B00CEE606 /* Model.swift in Sources */,
+				EF19A49D2D91106100CEE606 /* SignupView.swift in Sources */,
+				EF19A48B2D910D6500CEE606 /* ContentView.swift in Sources */,
+				EF19A4A02D91129A00CEE606 /* String+Ext.swift in Sources */,
+				EF19A48C2D910D6500CEE606 /* WhatsUpApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +408,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EF19A4922D910F5700CEE606 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EF19A4932D910F5700CEE606 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF19A4922D910F5700CEE606 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EF19A4952D910F5700CEE606 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF19A4922D910F5700CEE606 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		EF19A4972D910F5700CEE606 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF19A4922D910F5700CEE606 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		EF19A4992D910F5700CEE606 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF19A4922D910F5700CEE606 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF19A46A2D910D5A00CEE606 /* Project object */;
 }
