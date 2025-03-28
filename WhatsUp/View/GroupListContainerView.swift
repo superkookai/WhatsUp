@@ -22,6 +22,24 @@ struct GroupListContainerView: View {
                         Image(systemName: "person.2")
                         Text(group.subject)
                             .font(.title)
+                        
+                        Spacer()
+                        
+                        if let messageCount = model.groupMessageCount[group.subject.lowercased()], messageCount > 0 {
+                            ZStack {
+                                Circle()
+                                    .fill(.green.opacity(0.5))
+                                    .frame(width: 30)
+                                
+                                Text("\(messageCount)")
+                            }
+                        }
+                    }
+                    .onAppear {
+                        model.listenForNewChatCount(in: group)
+                    }
+                    .onDisappear {
+                        model.detachFirestoreNewChatCountListener(for: group)
                     }
                 }
             }
@@ -40,12 +58,11 @@ struct GroupListContainerView: View {
         .sheet(isPresented: $showAddNewGroup) {
             AddNewGroupView()
         }
-        .task {
-            do {
-                try await model.populateGroups()
-            } catch {
-                print("Error fetching groups: \(error.localizedDescription)")
-            }
+        .onAppear {
+            model.listenForGroups()
+        }
+        .onDisappear {
+            model.detachFirestoreGroupListener()
         }
     }
 }

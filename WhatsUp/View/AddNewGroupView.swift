@@ -16,14 +16,14 @@ struct AddNewGroupView: View {
         !groupSubject.isEmptyOrWhiteSpace
     }
     
-    private func addGroup() {
-        let group = Group(subject: groupSubject)
-        model.addGroup(group: group) { error in
-            if let error {
-                print("Error add new group: \(error.localizedDescription)")
-            }
+    private func addGroup() async {
+        do {
+            let group = Group(subject: groupSubject)
+            try await model.addGroup(group: group)
+            dismiss()
+        } catch {
+            print("Error adding group: \(error.localizedDescription)")
         }
-        dismiss()
     }
     
     var body: some View {
@@ -48,7 +48,9 @@ struct AddNewGroupView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        addGroup()
+                        Task {
+                            await addGroup()
+                        }
                     } label: {
                         Image(systemName: "plus.circle")
                     }

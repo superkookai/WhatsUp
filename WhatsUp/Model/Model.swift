@@ -14,8 +14,11 @@ class Model: ObservableObject {
     
     @Published var groups: [Group] = []
     @Published var chatMessages: [ChatMessage] = []
+    @Published var groupMessageCount: [String: Int] = [:]
     
-    var firestoreListener: ListenerRegistration?
+    var firestoreGroupListener: ListenerRegistration?
+    var firestoreChatMessagesListener: ListenerRegistration?
+    var firestoreNewChatCountListener: ListenerRegistration?
     
     func updateDisplayName(for user: User, displayName: String) async throws {
         let request = user.createProfileChangeRequest()
@@ -23,21 +26,8 @@ class Model: ObservableObject {
         try await request.commitChanges()
     }
     
-    func addGroup(group: Group, completion: @escaping (Error?) -> Void) {
-        let db = Firestore.firestore()
-        var docRef: DocumentReference? = nil
-        docRef = db.collection("groups").addDocument(data: group.toDict()) { [weak self] error in
-            if error != nil {
-                completion(error)
-            } else {
-                if let docRef {
-                    var newGroup = group
-                    newGroup.documentId = docRef.documentID
-                    self?.groups.append(newGroup)
-                }
-                completion(nil)
-            }
-        }
+    func addGroup(group: Group) async throws {
+        try await Firestore.firestore().collection("groups").addDocument(data: group.toDict())
     }
     
     func populateGroups() async throws {
@@ -48,10 +38,43 @@ class Model: ObservableObject {
     func saveChatMessageToGroup(chatMessage: ChatMessage, group: Group) async throws {
         guard let groupDocumentId = group.documentId else { return }
         let _ = try await Firestore.firestore().collection("groups").document(groupDocumentId).collection("messages").addDocument(data: chatMessage.toDict())
+        
     }
     
-    func detachFirestoreListener() {
-        self.firestoreListener?.remove()
+    func getNumberOfChatMessages(in group: Group) async throws -> Int? {
+        guard let groupDocumentId = group.documentId else { return nil }
+        return try await Firestore.firestore().collection("groups").document(groupDocumentId).collection("messages").getDocuments().count
+    }
+    
+    //MARK: - Listener for Number of new ChatMessages
+    func detachFirestoreNewChatCountListener(for group: Group) {
+        self.groupMessageCount[group.subject.lowercased()] = 0
+        self.firestoreNewChatCountListener?.remove()
+    }
+    
+    func listenForNewChatCount(in group: Group) {
+        let db = Firestore.firestore()
+        guard let groupDocumentId = group.documentId else { return }
+        
+        self.firestoreNewChatCountListener = db.collection("groups").document(groupDocumentId)
+            .collection("messages").order(by: "dateCreated", descending: false)
+            .addSnapshotListener({ [weak self] snapshot, error in
+                guard let snapshot else {
+                    print("Error listening snapshot: \(error!.localizedDescription)")
+                    return
+                }
+                
+                snapshot.documentChanges.forEach { docChange in
+                    if docChange.type == .added {
+                        self?.groupMessageCount[group.subject.lowercased()] = snapshot.documentChanges.count
+                    } 
+                }
+        })
+    }
+    
+    //MARK: - Listener for ChatMessages
+    func detachFirestoreChatMessageListener() {
+        self.firestoreChatMessagesListener?.remove()
     }
     
     func listenForChatMessages(in group: Group) {
@@ -59,7 +82,7 @@ class Model: ObservableObject {
         chatMessages.removeAll()
         guard let groupDocumentId = group.documentId else { return }
         
-        self.firestoreListener = db.collection("groups").document(groupDocumentId)
+        self.firestoreChatMessagesListener = db.collection("groups").document(groupDocumentId)
             .collection("messages").order(by: "dateCreated", descending: false)
             .addSnapshotListener({ [weak self] snapshot, error in
                 guard let snapshot else {
@@ -79,6 +102,36 @@ class Model: ObservableObject {
                     }
                 }
         })
+        
+    }
+    
+    //MARK: - Listener for Group
+    
+    func detachFirestoreGroupListener() {
+        self.firestoreGroupListener?.remove()
+    }
+    
+    func listenForGroups() {
+        groups.removeAll()
+        self.firestoreGroupListener?.remove()
+        self.firestoreGroupListener = Firestore.firestore().collection("groups").addSnapshotListener({ [weak self] snapshot, error in
+            guard let snapshot else {
+                print("Error listening snapshot: \(error!.localizedDescription)")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { docChange in
+                if docChange.type == .added {
+                    if let group = Group.fromSnapshot(snapshot: docChange.document) {
+                        if let exists = self?.groups.contains(where: {$0.documentId == group.documentId}) {
+                            if !exists {
+                                self?.groups.append(group)
+                            }
+                        }
+                    }
+                }
+            }
+        })
     }
 }
 
@@ -89,6 +142,23 @@ class Model: ObservableObject {
 //            if error != nil {
 //                completion(error)
 //            } else {
+//                completion(nil)
+//            }
+//        }
+//    }
+
+//    func addGroup(group: Group, completion: @escaping (Error?) -> Void) {
+//        let db = Firestore.firestore()
+//        var docRef: DocumentReference? = nil
+//        docRef = db.collection("groups").addDocument(data: group.toDict()) { [weak self] error in
+//            if error != nil {
+//                completion(error)
+//            } else {
+//                if let docRef {
+//                    var newGroup = group
+//                    newGroup.documentId = docRef.documentID
+//                    self?.groups.append(newGroup)
+//                }
 //                completion(nil)
 //            }
 //        }

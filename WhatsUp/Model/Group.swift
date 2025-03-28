@@ -27,4 +27,5 @@ extension Group {
         guard let subject = dict["subject"] as? String else { return nil }
         return Group(documentId: snapshot.documentID, subject: subject)
     }
+    
 }

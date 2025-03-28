@@ -29,7 +29,7 @@ struct GroupDetailView: View {
             model.listenForChatMessages(in: group)
         }
         .onDisappear {
-            model.detachFirestoreListener()
+            model.detachFirestoreChatMessageListener()
         }
     }
     
