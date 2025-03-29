@@ -20,6 +20,12 @@
 		EF19A4A02D91129A00CEE606 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A49F2D91129A00CEE606 /* String+Ext.swift */; };
 		EF19A4A32D91187B00CEE606 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A4A22D91187B00CEE606 /* Model.swift */; };
 		EF19A4A52D911A3A00CEE606 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A4A42D911A3A00CEE606 /* LoginView.swift */; };
+		EF94C4B12D97C01B0019B6CA /* ChatMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF94C4B02D97C01B0019B6CA /* ChatMessageView.swift */; };
+		EF94C4B32D97CCC60019B6CA /* Image+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF94C4B22D97CCC60019B6CA /* Image+Ext.swift */; };
+		EF94C4B52D97D1950019B6CA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF94C4B42D97D1950019B6CA /* ImagePicker.swift */; };
+		EF94C4B72D97D6E90019B6CA /* UIImagePickerController.SourceType+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF94C4B62D97D6E90019B6CA /* UIImagePickerController.SourceType+Ext.swift */; };
+		EF94C4B92D97D9510019B6CA /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF94C4B82D97D9510019B6CA /* UIImage+Ext.swift */; };
+		EF94C4BB2D97DCBB0019B6CA /* Storage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF94C4BA2D97DCBB0019B6CA /* Storage+Ext.swift */; };
 		EFF02BC82D92CB8000E9B062 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF02BC72D92CB8000E9B062 /* ChatMessage.swift */; };
 		EFF02BCA2D92D7F600E9B062 /* ChatMessagesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF02BC92D92D7F600E9B062 /* ChatMessagesListView.swift */; };
 		EFFC4AC02D92695A00DD45AB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4ABF2D92695A00DD45AB /* MainView.swift */; };
@@ -43,6 +49,12 @@
 		EF19A49F2D91129A00CEE606 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		EF19A4A22D91187B00CEE606 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EF19A4A42D911A3A00CEE606 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EF94C4B02D97C01B0019B6CA /* ChatMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageView.swift; sourceTree = "<group>"; };
+		EF94C4B22D97CCC60019B6CA /* Image+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Ext.swift"; sourceTree = "<group>"; };
+		EF94C4B42D97D1950019B6CA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EF94C4B62D97D6E90019B6CA /* UIImagePickerController.SourceType+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController.SourceType+Ext.swift"; sourceTree = "<group>"; };
+		EF94C4B82D97D9510019B6CA /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		EF94C4BA2D97DCBB0019B6CA /* Storage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Ext.swift"; sourceTree = "<group>"; };
 		EFF02BC72D92CB8000E9B062 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		EFF02BC92D92D7F600E9B062 /* ChatMessagesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessagesListView.swift; sourceTree = "<group>"; };
 		EFFC4ABF2D92695A00DD45AB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -120,6 +132,8 @@
 				EFFC4ACC2D927F1A00DD45AB /* AddNewGroupView.swift */,
 				EFFC4AC62D92796900DD45AB /* GroupDetailView.swift */,
 				EFF02BC92D92D7F600E9B062 /* ChatMessagesListView.swift */,
+				EF94C4B02D97C01B0019B6CA /* ChatMessageView.swift */,
+				EF94C4B42D97D1950019B6CA /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,6 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				EF19A49F2D91129A00CEE606 /* String+Ext.swift */,
+				EF94C4B22D97CCC60019B6CA /* Image+Ext.swift */,
+				EF94C4B62D97D6E90019B6CA /* UIImagePickerController.SourceType+Ext.swift */,
+				EF94C4B82D97D9510019B6CA /* UIImage+Ext.swift */,
+				EF94C4BA2D97DCBB0019B6CA /* Storage+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -224,9 +242,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF94C4B32D97CCC60019B6CA /* Image+Ext.swift in Sources */,
+				EF94C4B12D97C01B0019B6CA /* ChatMessageView.swift in Sources */,
 				EFFC4ACB2D927E9F00DD45AB /* GroupListContainerView.swift in Sources */,
+				EF94C4B52D97D1950019B6CA /* ImagePicker.swift in Sources */,
 				EFFC4AC92D92798600DD45AB /* SetttingsView.swift in Sources */,
+				EF94C4B92D97D9510019B6CA /* UIImage+Ext.swift in Sources */,
+				EF94C4BB2D97DCBB0019B6CA /* Storage+Ext.swift in Sources */,
 				EF19A4A52D911A3A00CEE606 /* LoginView.swift in Sources */,
+				EF94C4B72D97D6E90019B6CA /* UIImagePickerController.SourceType+Ext.swift in Sources */,
 				EFFC4AC02D92695A00DD45AB /* MainView.swift in Sources */,
 				EFFC4AC72D92796900DD45AB /* GroupDetailView.swift in Sources */,
 				EF19A4A32D91187B00CEE606 /* Model.swift in Sources */,
@@ -375,6 +399,8 @@
 				DEVELOPMENT_TEAM = T9MD4URZFH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "WhatsUp need to access Camera";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "WhatsUp need to access Photo Library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -404,6 +430,8 @@
 				DEVELOPMENT_TEAM = T9MD4URZFH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "WhatsUp need to access Camera";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "WhatsUp need to access Photo Library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -37,9 +37,11 @@ struct GroupListContainerView: View {
                     }
                     .onAppear {
                         model.listenForNewChatCount(in: group)
+                        print("Group Row Appear")
                     }
                     .onDisappear {
                         model.detachFirestoreNewChatCountListener(for: group)
+                        print("Group Row Disappear")
                     }
                 }
             }
@@ -60,9 +62,11 @@ struct GroupListContainerView: View {
         }
         .onAppear {
             model.listenForGroups()
+            print("Group List Appear")
         }
         .onDisappear {
             model.detachFirestoreGroupListener()
+            print("Group List Disappear")
         }
     }
 }

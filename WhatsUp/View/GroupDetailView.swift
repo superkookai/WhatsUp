@@ -19,7 +19,18 @@ struct GroupDetailView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                ChatMessagesListView(chatMessages: model.chatMessages)
+                ScrollViewReader { proxy in
+                    ChatMessagesListView(chatMessages: model.chatMessages)
+                        .onChange(of: model.chatMessages) { _, _ in
+                            if !model.chatMessages.isEmpty {
+                                let lastChatMessage = model.chatMessages[model.chatMessages.endIndex - 1]
+                                
+                                withAnimation {
+                                    proxy.scrollTo(lastChatMessage.id, anchor: .bottom)
+                                }
+                            }
+                        }
+                }
                 
                 SendMessageView(chatText: $chatText, action: sendMessage)
             }

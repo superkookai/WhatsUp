@@ -18,12 +18,32 @@ class Model: ObservableObject {
     
     var firestoreGroupListener: ListenerRegistration?
     var firestoreChatMessagesListener: ListenerRegistration?
-    var firestoreNewChatCountListener: ListenerRegistration?
+//    var firestoreNewChatCountListener: ListenerRegistration?
+    var firestoreNewChatCountListener: [String: ListenerRegistration] = [:]
     
     func updateDisplayName(for user: User, displayName: String) async throws {
         let request = user.createProfileChangeRequest()
         request.displayName = displayName
         try await request.commitChanges()
+        try await updateUserInfoForAllMessages(uid: user.uid, updatedInfo: ["displayName": displayName])
+    }
+    
+    func uploadPhotoURL(for user: User, photoURL: URL) async throws {
+        let request = user.createProfileChangeRequest()
+        request.photoURL = photoURL
+        try await request.commitChanges()
+        try await updateUserInfoForAllMessages(uid: user.uid, updatedInfo: ["profilePhotoURL": photoURL.absoluteString])
+    }
+    
+    private func updateUserInfoForAllMessages(uid: String, updatedInfo: [AnyHashable: Any]) async throws {
+        let db = Firestore.firestore()
+        let groupDocuments = try await db.collection("groups").getDocuments().documents
+        for groupDoc in groupDocuments {
+            let messages = try await groupDoc.reference.collection("messages").whereField("uid", isEqualTo: uid).getDocuments().documents
+            for message in messages {
+                try await message.reference.updateData(updatedInfo)
+            }
+        }
     }
     
     func addGroup(group: Group) async throws {
@@ -46,17 +66,20 @@ class Model: ObservableObject {
         return try await Firestore.firestore().collection("groups").document(groupDocumentId).collection("messages").getDocuments().count
     }
     
+    
     //MARK: - Listener for Number of new ChatMessages
     func detachFirestoreNewChatCountListener(for group: Group) {
         self.groupMessageCount[group.subject.lowercased()] = 0
-        self.firestoreNewChatCountListener?.remove()
+        self.firestoreNewChatCountListener[group.subject.lowercased()]?.remove()
     }
     
     func listenForNewChatCount(in group: Group) {
         let db = Firestore.firestore()
         guard let groupDocumentId = group.documentId else { return }
         
-        self.firestoreNewChatCountListener = db.collection("groups").document(groupDocumentId)
+        self.groupMessageCount[group.subject.lowercased()] = 0
+        
+        self.firestoreNewChatCountListener[group.subject.lowercased()] = db.collection("groups").document(groupDocumentId)
             .collection("messages").order(by: "dateCreated", descending: false)
             .addSnapshotListener({ [weak self] snapshot, error in
                 guard let snapshot else {
